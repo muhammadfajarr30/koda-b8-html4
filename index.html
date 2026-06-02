@@ -1,64 +1,105 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Survey Perokok</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form action="">
-      <div>
-        <label for="name">Siapa nama anda? :</label>
-        <div>
-          <input type="text" id="name" />
+    <div class="container">
+      <header class="form-header">
+        <h1>Survey Perokok daerah Jakarta dan sekitarnya</h1>
+        <p>Silakan isi form dengan baik dan benar.</p>
+      </header>
+
+      <form>
+        <div class="question-card">
+          <label class="question-title" for="name"> Siapa nama anda? </label>
+          <input
+            class="input-text"
+            type="text"
+            id="name"
+            placeholder="Jawaban Anda" />
         </div>
-      </div>
-      <div>
-        <label for="age">Berapa umur anda?</label>
-        <div>
-          <input type="number" id="age" />
+
+        <div class="question-card">
+          <label class="question-title" for="age"> Berapa umur anda? </label>
+          <input
+            class="input-number"
+            type="number"
+            id="age"
+            placeholder="Jawaban Anda" />
         </div>
-      </div>
-      <div>
-        <label for="gender">Apa jenis kelamin anda?</label>
-        <div>
-          <input type="radio" value="male" name="gender" />Laki-laki
-          <input type="radio" value="female" name="gender" /> Perempuan
+
+        <div class="question-card">
+          <label class="question-title"> Apa jenis kelamin anda? </label>
+
+          <label class="option">
+            <input type="radio" name="gender" value="male" />
+            Laki-laki
+          </label>
+
+          <label class="option">
+            <input type="radio" name="gender" value="female" />
+            Perempuan
+          </label>
         </div>
-      </div>
-      <div>
-        <label for="smoke">Apakah anda perokok?</label>
-        <div>
-          <input type="radio" value="yes" name="quest" /> Ya
-          <input type="radio" value="no" name="quest" /> Tidak
+
+        <div class="question-card">
+          <label class="question-title"> Apakah anda perokok? </label>
+
+          <label class="option">
+            <input type="radio" name="smoke" value="yes" />
+            Ya
+          </label>
+
+          <label class="option">
+            <input type="radio" name="smoke" value="no" />
+            Tidak
+          </label>
         </div>
-      </div>
-      <div>
-        <label for="smoke"
-          >Jika anda perokok, rokok apa yang anda pernah coba?</label
-        >
-        <div>
-          <div>
-            <input type="checkbox" name="cigarette" id="lucky-strike" /> Lucky
-            Strike
-          </div>
-          <div>
-            <input type="checkbox" name="cigarette" id="gudang-garam" /> Gudang
-            Garam Filter
-          </div>
-          <div>
-            <input type="checkbox" name="cigarette" id="marlboro" /> Marlboro
-          </div>
-          <div><input type="checkbox" name="cigarette" id="esse" /> Esse</div>
+
+        <div class="question-card">
+          <label class="question-title">
+            Jika anda perokok, rokok apa yang pernah anda coba?
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="cigarette" value="Lucky Strike" />
+            Lucky Strike
+          </label>
+
+          <label class="option">
+            <input
+              type="checkbox"
+              name="cigarette"
+              value="Gudang Garam Filter" />
+            Gudang Garam Filter
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="cigarette" value="Marlboro" />
+            Marlboro
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="cigarette" value="Esse" />
+            Esse
+          </label>
         </div>
-        <div>
-          <button type="submit">submit</button>
-          <button type="reset">reset</button>
+
+        <div class="button-group">
+          <button class="submit" type="submit">Kirim</button>
+          <button class="reset" type="reset">Clear Form</button>
         </div>
-      </div>
-    </form>
-    <div>
-      <a href="tabel-data.html">Hasil Data Survey!</a>
+        <div><p>never submit through google forms.</p></div>
+      </form>
     </div>
+    <footer>
+      <div class="footer-disclaimer">
+        <span>This content is neither creaeted nor endorsed by Google</span>
+      </div>
+    </footer>
   </body>
 </html>
