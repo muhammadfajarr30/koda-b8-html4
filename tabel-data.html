@@ -5,10 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    a {
+      border: 2px solid #4caf50;
+      text-decoration: none;
+      padding: 10px 100px;
+      border-radius: 6px;
+      background-color: white;
+      cursor: pointer;
+      color: #1a941e;
+      &:hover {
+        background-color: #4caf50;
+        color: white;
+      }
+    }
+  </style>
   <body>
-    <div align="center">
+    <div class="container">
       <h1>Tabel Data Survey Perokok</h1>
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <th>No</th>
@@ -19,89 +60,50 @@
             <th>Merk Rokok</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1.</td>
-            <td>Ijat</td>
-            <td>30</td>
-            <td>Laki-laki</td>
-            <td>Ya</td>
-            <td>Gudang Garam Filter</td>
-          </tr>
-          <tr>
-            <td>2.</td>
-            <td>Upin</td>
-            <td>17</td>
-            <td>Laki-laki</td>
-            <td>Ya</td>
-            <td>Lucky Strike, Marlboro</td>
-          </tr>
-          <tr>
-            <td>3.</td>
-            <td>Ipin</td>
-            <td>17</td>
-            <td>Laki-laki</td>
-            <td>Ya</td>
-            <td>Lucky Strike, Marlboro</td>
-          </tr>
-          <tr>
-            <td>4.</td>
-            <td>Mail</td>
-            <td>27</td>
-            <td>Laki-Laki</td>
-            <td>Ya</td>
-            <td>Gudang Garam Filter, Esse</td>
-          </tr>
-          <tr>
-            <td>5.</td>
-            <td>Susanti</td>
-            <td>24</td>
-            <td>Perempuan</td>
-            <td>Tidak</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>6.</td>
-            <td>Mei-Mei</td>
-            <td>29</td>
-            <td>Perempuan</td>
-            <td>Ya</td>
-            <td>Lucky Strike, Esse</td>
-          </tr>
-          <tr>
-            <td>7.</td>
-            <td>Jarjit</td>
-            <td>30</td>
-            <td>Laki-laki</td>
-            <td>Ya</td>
-            <td>Lucky Strike, Gudang Garam Filter, Marlboro</td>
-          </tr>
-          <tr>
-            <td>8.</td>
-            <td>Sanji</td>
-            <td>28</td>
-            <td>Laki-Laki</td>
-            <td>Ya</td>
-            <td>Lucky Strike, Marlboro</td>
-          </tr>
-          <tr>
-            <td>9.</td>
-            <td>Nami</td>
-            <td>Perempuan</td>
-            <td>27</td>
-            <td>Tidak</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>10.</td>
-            <td>Zoro</td>
-            <td>32</td>
-            <td>Laki-Laki</td>
-            <td>Ya</td>
-            <td>Lucky Strike</td>
-          </tr>
-        </tbody>
+        <tbody id="list-respondent"></tbody>
       </table>
+
+      <div class="back-to-survey"><a href="index.html">Kembali Ke Form</a></div>
     </div>
+    <script>
+      const listRespondent = document.getElementById("list-respondent");
+      function renderTableData() {
+        const data = JSON.parse(localStorage.getItem("respondent")) || [];
+        data.forEach((person, index) => {
+          const row = document.createElement("tr");
+          const number = document.createElement("td");
+          number.textContent = index + 1;
+          const name = document.createElement("td");
+          name.textContent = person.name;
+          const age = document.createElement("td");
+          age.textContent = person.age;
+          const gender = document.createElement("td");
+          if (person.gender === "male") {
+            gender.textContent = "Laki-laki";
+          } else {
+            gender.textContent = "Perempuan";
+          }
+          const smoke = document.createElement("td");
+          if (person.smoke === "yes") {
+            smoke.textContent = "Iya";
+          } else {
+            smoke.textContent = "Tidak";
+          }
+
+          const cigaretteBrand = document.createElement("td");
+          cigaretteBrand.textContent = person.cigarette.join(", ");
+
+          row.appendChild(number);
+          row.appendChild(name);
+          row.appendChild(age);
+          row.appendChild(gender);
+          row.appendChild(smoke);
+          row.appendChild(cigaretteBrand);
+
+          listRespondent.appendChild(row);
+        });
+      }
+      renderTableData();
+    </script>
   </body>
 </html>

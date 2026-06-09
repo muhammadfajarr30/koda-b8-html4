@@ -1,13 +1,8 @@
 # Form Survey Rokok 
 
-## Make a form survey display like google form 
+## Create form survey for smoker 
+create form survey for smoker and saved data to local storage, display all data to the table 
 
-make a form survey for smoker with html and vanilla css
+<img src="form-survey.png">
 
-inspiration appearence
-
-<img src="google-form-inspo.png">
-
-my work
-
-<img src="image.png">
+<img src="table-data.png">
