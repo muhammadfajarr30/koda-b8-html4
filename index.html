@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Survey Perokok</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
   <body class="bg-[#f0ebf8] font-sans px-4 md:px-32 py-16">
@@ -106,35 +107,31 @@
       </footer>
     </div>
     <script>
-      const form = document.querySelector("form");
+      $(document).ready(function () {
+        $("form").on("submit", function (e) {
+          e.preventDefault();
+          const name = $("#name").val();
+          const age = $("#age").val();
+          const gender = $('input[name="gender"]:checked').val();
+          const smoke = $('input[name="smoke"]:checked').val();
+          const cigarette = [];
+          $('input[name="cigarette"]:checked').each(function () {
+            cigarette.push($(this).val());
+            console.log(cigarette)
+          });
+          const respondent = {
+            name: name,
+            age: age,
+            gender: gender,
+            smoke: smoke,
+            cigarrete: cigarette,
+          };
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const name = formData.get("name");
-        const age = formData.get("age");
-        const gender = formData.get("gender");
-        const smoke = formData.get("smoke");
-        const cigarette = formData.getAll("cigarette");
-        const respondent = {
-          name: name,
-          age: age,
-          gender: gender,
-          smoke: smoke,
-          cigarette: cigarette,
-        };
-
-        const data = JSON.parse(localStorage.getItem("respondent")) || [];
-
-        data.push(respondent);
-
-        localStorage.setItem("respondent", JSON.stringify(data));
-
-        console.log(respondent);
-        console.log(data);
-
-        form.reset();
+          const data = JSON.parse(localStorage.getItem("respondent")) || [];
+          data.push(respondent);
+          localStorage.setItem("respondent", JSON.stringify(data));
+          console.log(data);
+        });
       });
     </script>
   </body>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Document</title>
   </head>
   <style>
@@ -66,44 +67,31 @@
       <div class="back-to-survey"><a href="index.html">Kembali Ke Form</a></div>
     </div>
     <script>
-      const listRespondent = document.getElementById("list-respondent");
-      function renderTableData() {
-        const data = JSON.parse(localStorage.getItem("respondent")) || [];
-        data.forEach((person, index) => {
-          const row = document.createElement("tr");
-          const number = document.createElement("td");
-          number.textContent = index + 1;
-          const name = document.createElement("td");
-          name.textContent = person.name;
-          const age = document.createElement("td");
-          age.textContent = person.age;
-          const gender = document.createElement("td");
-          if (person.gender === "male") {
-            gender.textContent = "Laki-laki";
-          } else {
-            gender.textContent = "Perempuan";
-          }
-          const smoke = document.createElement("td");
-          if (person.smoke === "yes") {
-            smoke.textContent = "Iya";
-          } else {
-            smoke.textContent = "Tidak";
-          }
+      const data = JSON.parse(localStorage.getItem("respondent")) || [];
+      const listRespondent = $("#list-respondent");
+      data.forEach((item, index) => {
+        const row = $("<tr></tr>");
+        const number = $("<td></td>");
+        number.text(index + 1);
+        const name = $("<td></td>");
+        name.text(item.name);
+        const age = $("<td></td>");
+        age.text(item.age);
+        const gender = $("<td></td>");
+        gender.text(item.gender);
+        const smoker = $("<td></td>");
+        smoker.text(item.smoke);
+        const cigarette = $("<td></td>");
+        cigarette.text(item.cigarrete);
 
-          const cigaretteBrand = document.createElement("td");
-          cigaretteBrand.textContent = person.cigarette.join(", ");
-
-          row.appendChild(number);
-          row.appendChild(name);
-          row.appendChild(age);
-          row.appendChild(gender);
-          row.appendChild(smoke);
-          row.appendChild(cigaretteBrand);
-
-          listRespondent.appendChild(row);
-        });
-      }
-      renderTableData();
+        row.append(number);
+        row.append(name);
+        row.append(age);
+        row.append(gender);
+        row.append(smoker);
+        row.append(cigarette);
+        listRespondent.append(row);
+      });
     </script>
   </body>
 </html>
