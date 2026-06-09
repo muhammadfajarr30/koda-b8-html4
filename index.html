@@ -4,106 +4,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Survey Perokok</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <div class="container">
-      <header class="form-header">
-        <h1>Survey Perokok daerah Jakarta dan sekitarnya</h1>
-        <p>Silakan isi form dengan baik dan benar.</p>
-      </header>
 
-      <form>
-        <div class="question-card">
-          <label class="question-title" for="name"> Siapa nama anda? </label>
+  <body class="bg-[#f0ebf8] font-sans px-4 md:px-32 py-16">
+    <div class="max-w-3xl mx-auto">
+      <header
+        class="bg-white border-t-[10px] border-purple-600 rounded-xl p-8 mb-5">
+        <h1 class="text-3xl font-semibold mb-2">
+          Survey Perokok daerah Jakarta dan sekitarnya
+        </h1>
+        <p class="text-gray-500">Silakan isi form dengan baik dan benar.</p>
+      </header>
+      <form id="surveyForm">
+        <div class="bg-white rounded-xl p-6 mb-4">
+          <label class="mb-4" for="name"> Siapa nama anda? </label>
           <input
-            class="input-text"
-            type="text"
             id="name"
             name="name"
-            placeholder="Jawaban Anda" />
+            type="text"
+            placeholder="Jawaban Anda"
+            class="w-full border-b-2 border-gray-200 focus:border-purple-600 outline-none py-2" />
         </div>
-
-        <div class="question-card">
-          <label class="question-title" for="age"> Berapa umur anda? </label>
+        <div class="bg-white rounded-xl p-6 mb-4">
+          <label class="mb-4" for="age"> Berapa umur anda? </label>
           <input
-            class="input-number"
-            type="number"
             id="age"
             name="age"
-            placeholder="Jawaban Anda" />
+            type="number"
+            placeholder="Jawaban Anda"
+            class="w-full border-b-2 border-gray-200 focus:border-purple-600 outline-none py-2" />
         </div>
+        <div class="bg-white rounded-xl p-6 mb-4">
+          <p class="mb-4 text-base">Apa jenis kelamin anda?</p>
 
-        <div class="question-card">
-          <label class="question-title"> Apa jenis kelamin anda? </label>
-
-          <label class="option">
+          <label class="flex items-center gap-2 mb-3 cursor-pointer">
             <input type="radio" name="gender" value="male" />
             Laki-laki
           </label>
-
-          <label class="option">
+          <label class="flex items-center gap-2 cursor-pointer">
             <input type="radio" name="gender" value="female" />
             Perempuan
           </label>
         </div>
-
-        <div class="question-card">
-          <label class="question-title"> Apakah anda perokok? </label>
-
-          <label class="option">
+        <div class="bg-white rounded-xl p-6 mb-4">
+          <p class="mb-4 text-base">Apakah anda perokok?</p>
+          <label class="flex items-center gap-2 mb-3 cursor-pointer">
             <input type="radio" name="smoke" value="yes" />
             Ya
           </label>
-
-          <label class="option">
+          <label class="flex items-center gap-2 cursor-pointer">
             <input type="radio" name="smoke" value="no" />
             Tidak
           </label>
         </div>
-
-        <div class="question-card">
-          <label class="question-title">
+        <div class="bg-white rounded-xl p-6 mb-4">
+          <p class="mb-4">
             Jika anda perokok, rokok apa yang pernah anda coba?
-          </label>
-
-          <label class="option">
+          </p>
+          <label class="flex items-center gap-2 mb-3 cursor-pointer">
             <input type="checkbox" name="cigarette" value="Lucky Strike" />
             Lucky Strike
           </label>
-
-          <label class="option">
+          <label class="flex items-center gap-2 mb-3 cursor-pointer">
             <input
               type="checkbox"
               name="cigarette"
               value="Gudang Garam Filter" />
             Gudang Garam Filter
           </label>
-
-          <label class="option">
+          <label class="flex items-center gap-2 mb-3 cursor-pointer">
             <input type="checkbox" name="cigarette" value="Marlboro" />
             Marlboro
           </label>
 
-          <label class="option">
+          <label class="flex items-center gap-2 cursor-pointer">
             <input type="checkbox" name="cigarette" value="Esse" />
             Esse
           </label>
         </div>
+        <div class="flex justify-between gap-4 my-6">
+          <button
+            type="submit"
+            class="bg-purple-600 text-white px-6 py-3 rounded cursor-pointer duration-300 ease-in-out w-fit">
+            Kirim
+          </button>
 
-        <div class="button-group">
-          <button class="submit" type="submit">Kirim</button>
-          <button class="reset" type="reset">Clear Form</button>
+          <button
+            type="reset"
+            class="text-purple-600 font-semibold px-6 py-3 rounded cursor-pointer w-fit">
+            Clear Form
+          </button>
         </div>
-        <div><p>never submit through google forms.</p></div>
+        <p class="text-sm text-gray-600">never submit through google forms.</p>
       </form>
+      <footer class="mt-10 text-sm text-gray-500">
+        <p>This content is neither created nor endorsed by Google</p>
+        <a href="tabel-data.html" class="text-purple-600">
+          Lihat Data Survey
+        </a>
+      </footer>
     </div>
-    <footer>
-      <div class="footer-disclaimer">
-        <span>This content is neither creaeted nor endorsed by Google</span>
-      </div>
-      <a href="tabel-data.html">Lihat Data Survey</a>
-    </footer>
     <script>
       const form = document.querySelector("form");
 
